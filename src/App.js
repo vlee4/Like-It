@@ -21,6 +21,10 @@ class App extends React.Component {
         movieName: snap.val()
       })
     })
+    const firebaseGreeting = firebase.functions().httpsCallable("helloWorld");
+    firebaseGreeting().then(function(value){
+      console.log("Data from firebaseGreeting", value.data)
+    })
   }
 
 render(){
