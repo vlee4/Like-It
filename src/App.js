@@ -5,18 +5,17 @@ import firebase from "firebase";
 
 
 class App extends React.Component {
-  //database.ref refers to root of db, child("key") creates a child key on that object called "key"
-  // const dbRef = firebase.database().ref().child()
   constructor(){
     super()
     this.state = {
       movieName: "Spirited Away"
     }
   }
-
+  //Testing that db syncs
   componentDidMount(){
     const dbRef = firebase.database().ref().child('movies');
     const movieRef = dbRef.child("movieName");
+    //when the value of the movie ref changes that value will be set to movieName on local state
     movieRef.on("value", snap=>{
       this.setState({
         movieName: snap.val()
