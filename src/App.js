@@ -2,7 +2,10 @@ import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import firebase from "firebase";
-
+// import "firebase/database";
+import axios from "axios";
+// import dotenv from "dotenv";
+require('dotenv').config();
 
 class App extends React.Component {
   constructor(){
@@ -12,7 +15,7 @@ class App extends React.Component {
     }
   }
   //Testing that db syncs
-  componentDidMount(){
+ async componentDidMount(){
     const dbRef = firebase.database().ref().child('movies');
     const movieRef = dbRef.child("movieName");
     //when the value of the movie ref changes that value will be set to movieName on local state
@@ -21,6 +24,10 @@ class App extends React.Component {
         movieName: snap.val()
       })
     })
+    let API_KEY = process.env.REACT_APP_API_KEY
+    let query = this.state.movieName;
+    let data =  await axios.get(`https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
+    console.log("DATA", data)
   }
 
 render(){
