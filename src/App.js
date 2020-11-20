@@ -3,7 +3,7 @@ import './App.css';
 import React from "react";
 import firebase from "firebase";
 // import "firebase/database";
-import axios from "axios";
+// import axios from "axios";
 // import dotenv from "dotenv";
 require('dotenv').config();
 
@@ -24,9 +24,14 @@ class App extends React.Component {
         movieName: snap.val()
       })
     })
-    const firebaseGreeting = firebase.functions().httpsCallable("helloWorld");
-    firebaseGreeting().then(function(value){
-      console.log("Data from firebaseGreeting", value.data)
+    // const firebaseGreeting = firebase.functions().httpsCallable("helloWorld");
+    // firebaseGreeting().then(function(value){
+    //   console.log("Data from firebaseGreeting", value.data)
+    // })
+
+    const firebaseMovieSearch = firebase.functions().httpsCallable("movieSearch");
+    firebaseMovieSearch("Clannad").then(function(value){
+      console.log("Data from firebaseMovieSearch", value)
     })
     // let API_KEY = process.env.REACT_APP_API_KEY
     // let query = this.state.movieName;
