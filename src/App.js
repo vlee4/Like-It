@@ -34,7 +34,8 @@ class App extends React.Component {
     // firebaseMovieSearch("Clannad").then(function(value){
     //   console.log("Data from firebaseMovieSearch", value)
     // })
-    axios.get(`https://us-central1-like-1t.cloudfunctions.net/movieSearch`, {params: {query:"Clannad"}})
+   let {data} = await axios.get(`https://us-central1-like-1t.cloudfunctions.net/movieSearch`, {params: {query:"Chobits"}});
+   console.log("Data to front", data)
     // let API_KEY = process.env.REACT_APP_API_KEY
     // let query = this.state.movieName;
     // let data =  await axios.get(`https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
