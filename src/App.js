@@ -25,8 +25,8 @@ class App extends React.Component {
         movieName: snap.val()
       })
     })
-
-   let {data} = await axios.get(`https://us-central1-like-1t.cloudfunctions.net/movieSearch`, {params: {q:"Chobits"}});
+    let query = "Sky Castle"
+   let {data} = await axios.get(`https://us-central1-like-1t.cloudfunctions.net/movieSearch`, {params: {q: query}});
    console.log("Data to front", data)
   }
 
