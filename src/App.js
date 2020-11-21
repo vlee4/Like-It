@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import firebase from "firebase";
+import axios from 'axios';
 // import "firebase/database";
 // import axios from "axios";
 // import dotenv from "dotenv";
@@ -29,10 +30,11 @@ class App extends React.Component {
     //   console.log("Data from firebaseGreeting", value.data)
     // })
 
-    const firebaseMovieSearch = firebase.functions().httpsCallable("movieSearch");
-    firebaseMovieSearch("Clannad").then(function(value){
-      console.log("Data from firebaseMovieSearch", value)
-    })
+    // const firebaseMovieSearch = firebase.functions().httpsCallable("movieSearch");
+    // firebaseMovieSearch("Clannad").then(function(value){
+    //   console.log("Data from firebaseMovieSearch", value)
+    // })
+    axios.get(`https://us-central1-like-1t.cloudfunctions.net/movieSearch`, {params: {query:"Clannad"}})
     // let API_KEY = process.env.REACT_APP_API_KEY
     // let query = this.state.movieName;
     // let data =  await axios.get(`https://www.omdbapi.com/?s=${query}&apikey=${API_KEY}`);
