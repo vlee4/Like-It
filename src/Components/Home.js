@@ -1,13 +1,13 @@
 import {Link} from "react-router-dom"
+import {connect} from "react-redux"
 
 function Home(){
   return(
-    <div className="container">
+    <div className="content">
       Welcome to the home page
-      <p>A description will be added</p>
-      <Link to="/Movies">Go to Search App</Link>
+     <div><Link to="/Movies">Go to Search App</Link></div>
     </div>
   )
 }
 
-export default Home;
+export default connect()(Home);
