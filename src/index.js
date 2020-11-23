@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 
 import { Provider } from "react-redux";
 import store from "./Store"
-import History from "./History"
+// import History from "./History"
 
 import firebase from "firebase";
 import {firebaseConfig} from "./firebaseConfig.js"
@@ -16,7 +16,7 @@ firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(
   <Provider store={store}>
-    <Router history={History}>
+    <Router>
   {/* <React.StrictMode> */}
       <App />
   {/* </React.StrictMode> */}
