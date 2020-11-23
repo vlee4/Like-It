@@ -10,7 +10,7 @@ class App extends React.Component {
 render(){
   return (
     <div className="App">
-      <h1>Like 1t</h1>
+      <h1 id="title">Like 1t</h1>
       <div className="content">
       <SearchBar/>
       <Results/>

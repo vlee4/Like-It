@@ -1,6 +1,13 @@
 .App {
   text-align: center;
   background-color: lightgrey;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+#title {
+  margin: 0em;
+  padding: 0.5em 0em;
 }
 .content {
   background: linear-gradient(
@@ -40,6 +47,10 @@
 .singleResult img {
   height: 100%;
   width: auto;
+}
+
+.noImgSvg {
+  margin: 0em 3em;
 }
 
 .movieInfo {
