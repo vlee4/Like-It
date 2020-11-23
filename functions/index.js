@@ -36,6 +36,18 @@ app.get("/", async (req, res)=> {
     }
 })
 
+app.get("/:id", async(req, res)=>{
+  try{
+    const url = `https://www.omdbapi.com/?i=${req.query.id}&plot=full&apikey=${functions.config().omdb.key}`;
+    let {data} = await axios.get(url);
+    res.set("Access-Control-Allow-Origin", "*")
+          .status(200)
+          .send(data);
+  } catch(error) {
+    console.log("Error from firebase function details search")
+  }
+})
+
 exports.movieSearch = functions.https.onRequest(app)
 
 // exports.movieSearch = functions.https.onRequest(async(req, res)=> {

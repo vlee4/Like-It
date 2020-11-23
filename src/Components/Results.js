@@ -1,4 +1,5 @@
 import {connect} from "react-redux"
+import {fetchDetails} from "../Store/moviesReducer"
 
 function Results(props) {
   console.log("Props", props)
@@ -14,11 +15,11 @@ function Results(props) {
       <div>Sorry, no results for {props.query} </div>
       )
     }
-  else if(props.query && (!props.results)){
-    return (
-      <div>Loading...</div>
-    )
-  }
+  // else if(props.query && (!props.results)){
+  //   return (
+  //     <div>Loading...</div>
+  //   )
+  // }
   return (
     <div className="results">
       {props.results.Response?
@@ -52,4 +53,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(Results)
+const mapDispatchToProps = dispatch => {
+  return {
+    getDetails: (id) => dispatch(fetchDetails(id))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Results)
