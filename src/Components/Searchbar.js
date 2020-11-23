@@ -1,6 +1,5 @@
 import React from "react";
 import {connect} from "react-redux"
-// import firebase from "firebase";
 import {searchMovies} from "../Store/moviesReducer"
 
 class SearchBar extends React.Component {
@@ -17,7 +16,6 @@ class SearchBar extends React.Component {
 
 
   change(){
-    console.log("new value", this.inputRef.current.value)
     this.setState({query: this.inputRef.current.value})
   }
   search(){

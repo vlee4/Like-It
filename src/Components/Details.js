@@ -4,14 +4,16 @@ import {fetchDetails} from "../Store/moviesReducer"
 
 class Details extends React.Component {
 
-  componentDidMount(){
-    this.props.getDetails()
+ async componentDidMount(){
+    let {movieId} = this.props.match.params;
+    await this.props.getDetails(movieId)
+    console.log("movie id:", movieId)
   }
 
-  return (){
+  render (){
     return (
-      <div className="details">
-        Details
+      <div className="container">
+       {this.props.details?(<div>Details arrived</div>):(<div>Loading</div>)}
       </div>
     )
 

@@ -39,6 +39,7 @@ app.get("/", async (req, res)=> {
 app.get("/:id", async(req, res)=>{
   try{
     const url = `https://www.omdbapi.com/?i=${req.query.id}&plot=full&apikey=${functions.config().omdb.key}`;
+    console.log("url", url);
     let {data} = await axios.get(url);
     res.set("Access-Control-Allow-Origin", "*")
           .status(200)
