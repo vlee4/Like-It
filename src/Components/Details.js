@@ -7,12 +7,11 @@ class Details extends React.Component {
  async componentDidMount(){
     let {movieId} = this.props.match.params;
     await this.props.getDetails(movieId)
-    console.log("movie id:", movieId)
   }
 
   render (){
     console.log("Here's the details", this.props.details)
-    const {Actors, Director, Genre, Plot, Poster, Rated, Runtime, Title } = this.props.details
+    const {Actors, Director, Genre, Plot, Poster, Rated, Runtime, Title } = this.props.details? this.props.details: "";
     return (
       <div className="container">
        {this.props.details?
@@ -28,16 +27,16 @@ class Details extends React.Component {
             <div><strong>Runtime: </strong>{Runtime}</div>
          <div className="vote">
            <div>Have you seen this movie? How was it?</div>
-           <div>
-             <span>Upvote</span>
-             <span>Downvote</span>
-             <span>[Current Rating Here]</span>
+           <div className="voteRatings">
+             <span><img src={`/images/thumb_up_alt-black-24dp.svg`}alt="thumb_up"></img>
+              <img src={`/images/thumb_down_alt-black-24dp.svg`} alt="thumb_down"></img></span>
+            <span>[Current Rating Here]</span>
            </div>
           </div>
          </div>
        </div>)
-       :(<div className="movieContainer">
-         <img src="/images/Loading.svg" alt="Loading"></img>
+       :(<div >
+         <img className="loading" src="/images/Loading.svg" alt="Loading"></img>
          </div>)}
       </div>
     )

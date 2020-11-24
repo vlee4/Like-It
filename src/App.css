@@ -67,6 +67,10 @@
   padding: 1em;
 }
 
+/* .loading {
+
+} */
+
 .movieDetails {
   text-align: left;
 }
@@ -75,6 +79,11 @@
   padding: 2em 0em;
 }
 
-.vote span {
-  padding: 1em;
+.voteRatings {
+  display: flex;
+  padding: 0.5em 0em;
+}
+
+.voteRatings span img {
+  padding: 0em 0.25em;
 }

@@ -10,17 +10,19 @@ function Results(props) {
         Type in a movie name to search
       </div>
     )
+  }else if(!props.results){
+    return (
+      <div><span>Loading...</span>
+         <img className="loading" src="/images/Loading.svg" alt="Loading"></img>
+      </div>
+    )
   }
   else if(props.query && props.results.Response==="False"){
     return (
       <div className="container">Sorry, no results for {props.query} </div>
       )
     }
-  // else if(props.query && (!props.results)){
-  //   return (
-  //     <div>Loading...</div>
-  //   )
-  // }
+
   return (
     <div className="container">
       {props.results.Response?
@@ -41,7 +43,7 @@ function Results(props) {
                )
             })}</div>
       </div>):
-      <div>Sorry, no results where found for that query</div>
+      <div>Sorry, no results were found for that query</div>
     }
     </div>
   )
