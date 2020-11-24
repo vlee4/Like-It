@@ -58,3 +58,23 @@
   margin: 0em 2em;
   width: 100%;
 }
+
+/*------- Details Page--------- */
+
+.movieContainer {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  padding: 1em;
+}
+
+.movieDetails {
+  text-align: left;
+}
+
+.vote {
+  padding: 2em 0em;
+}
+
+.vote span {
+  padding: 1em;
+}

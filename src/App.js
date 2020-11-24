@@ -13,11 +13,11 @@ render(){
   return (
     <div className="App">
       <h1 id="title">Like 1t</h1>
-      {/* <div className="content"> */}
+      <div className="content">
       {/* <SearchBar/>
       <Results/> */}
       <Routes/>
-      {/* </div> */}
+      </div>
     </div>
   );
 }
