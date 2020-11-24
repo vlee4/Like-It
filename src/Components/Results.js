@@ -1,6 +1,7 @@
 import {connect} from "react-redux"
 import {fetchDetails} from "../Store/moviesReducer"
 import {Link} from "react-router-dom";
+import {ReactComponent as NoImg} from "../images/image-not-found.svg";
 
 function Results(props) {
   console.log("Props", props)
@@ -13,7 +14,7 @@ function Results(props) {
   }else if(!props.results){
     return (
       <div><span>Loading...</span>
-         <img className="loading" src="/images/Loading.svg" alt="Loading"></img>
+         <img className="loading" src="../images/Loading.svg" alt="Loading"></img>
       </div>
     )
   }
@@ -34,7 +35,8 @@ function Results(props) {
                return (
                  <div key={`${idx}_${movie.imdbID}`} className=
                  "singleResult">
-                   <img src={(movie.Poster!=="N/A")?(movie.Poster):"/images/image-not-found.svg"} alt={`${movie.Title} poster`} className={noImg}></img>
+                   {/* <img src={(movie.Poster!=="N/A")?(movie.Poster):"../images/image-not-found.svg"} alt={`${movie.Title} poster`} className={noImg}></img> */}
+                   {movie.Poster!=="N/A"?<img src={movie.Poster} alt={`${movie.Title} poster`} className={noImg}></img>:<NoImg className={noImg}/>}
                    <div className="movieInfo">
                       <Link to={`/Movies/${movie.imdbID}`}><div>{movie.Title}</div></Link>
                       <div>{movie.Year}</div>

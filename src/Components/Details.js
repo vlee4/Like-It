@@ -1,12 +1,26 @@
 import React from "react";
 import { connect } from "react-redux";
-import {fetchDetails} from "../Store/moviesReducer"
+import {fetchDetails} from "../Store/moviesReducer";
+// import "images/svg-defs.svg";
+import {ReactComponent as ThumbUp} from "../images/thumb_up_alt-black-24dp.svg";
+import {ReactComponent as ThumbDown} from "../images/thumb_down_alt-black-24dp.svg";
+// import {ReactComponent as Loading} from "../images/Loading.svg";
 
 class Details extends React.Component {
+  constructor(){
+    super()
+
+    this.vote = this.vote.bind(this);
+  }
 
  async componentDidMount(){
     let {movieId} = this.props.match.params;
     await this.props.getDetails(movieId)
+  }
+
+  vote(e){
+    let rating = e.target.alt==="thumb_up"? "up": "down";
+    console.log(`${rating} vote received`, e.target)
   }
 
   render (){
@@ -28,15 +42,17 @@ class Details extends React.Component {
          <div className="vote">
            <div>Have you seen this movie? How was it?</div>
            <div className="voteRatings">
-             <span><img src={`/images/thumb_up_alt-black-24dp.svg`}alt="thumb_up"></img>
-              <img src={`/images/thumb_down_alt-black-24dp.svg`} alt="thumb_down"></img></span>
+             <span>
+               <ThumbUp className="thumb" />
+               <ThumbDown className="thumb"/>
+              </span>
             <span>[Current Rating Here]</span>
            </div>
           </div>
          </div>
        </div>)
        :(<div >
-         <img className="loading" src="/images/Loading.svg" alt="Loading"></img>
+         <img className="loading" src="/Loading.svg" alt="Loading"></img>
          </div>)}
       </div>
     )

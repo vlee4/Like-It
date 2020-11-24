@@ -50,7 +50,9 @@
 }
 
 .noImgSvg {
-  margin: 0em 3em;
+  width: 80%;
+  height: 80%;
+  padding: 3em 3em 0em 3em;
 }
 
 .movieInfo {
@@ -67,10 +69,6 @@
   padding: 1em;
 }
 
-/* .loading {
-
-} */
-
 .movieDetails {
   text-align: left;
 }
@@ -85,5 +83,16 @@
 }
 
 .voteRatings span img {
-  padding: 0em 0.25em;
+  margin: 0em 0.25em;
+}
+
+.thumb {
+  fill: black;
+  margin: 0em 0.25em;
+}
+
+.thumb:hover {
+  cursor: pointer;
+  pointer-events: fill;
+  fill: #8f47ea;
 }
