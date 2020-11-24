@@ -67,10 +67,16 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
   padding: 1em;
+  justify-items: center;
+  align-items: center;
 }
 
 .movieDetails {
   text-align: left;
+}
+
+.detail {
+  margin: 0.25em 0em;
 }
 
 .vote {

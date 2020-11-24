@@ -33,12 +33,12 @@ class Details extends React.Component {
          <img src={Poster} alt={`${Title} Poster`}></img>
          <div className="movieDetails">
             <h2>{Title}</h2>
-            <div>{Plot}</div>
-            <div><strong>Director:</strong>{Director}</div>
-            <div><strong>Actors:</strong>{Actors}</div>
-            <div><strong>Genre: </strong>{Genre}</div>
-            <div><strong>Rated: </strong>{Rated}</div>
-            <div><strong>Runtime: </strong>{Runtime}</div>
+            <div className="detail">{Plot}</div>
+            <div className="detail"><strong>Director:</strong>{Director}</div>
+            <div className="detail"><strong>Actors:</strong>{Actors}</div>
+            <div className="detail"><strong>Genre: </strong>{Genre}</div>
+            <div className="detail"><strong>Rated: </strong>{Rated}</div>
+            <div className="detail"><strong>Runtime: </strong>{Runtime}</div>
          <div className="vote">
            <div>Have you seen this movie? How was it?</div>
            <div className="voteRatings">
