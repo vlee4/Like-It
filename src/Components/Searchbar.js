@@ -26,9 +26,11 @@ class SearchBar extends React.Component {
 
   render(){
     return (
-      <div>
+      <div className="Searchbar">
+        <span>
          <input name="search" type="text" placeholder="Search for a movie" ref={this.inputRef} value={this.state.query} onChange={this.change}></input>
         <button name="search" type='button'onClick={this.search}>Search</button>
+        </span>
         <div><strong>You searched for:</strong> {this.state.movieName}</div>
       </div>
     )

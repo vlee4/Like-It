@@ -44,9 +44,7 @@ export const searchMovies = (query) => {
 export const fetchDetails = (id) => {
   return async dispatch => {
     try {
-      //make call w/ firebase functions
       const {data} = await axios.get(`https://us-central1-like-1t.cloudfunctions.net/movieSearch/<id>`, {params: {id}})
-      console.log("In redux store, getDetails")
       dispatch(fetchMovie(data))
     } catch(error) {
       console.log("Error getting movie details", error)
@@ -57,14 +55,6 @@ export const fetchDetails = (id) => {
 export const updateRating = (vote) => {
   return async dispatch => {
     try {
-      console.log("vote", vote)
-      //update db
-      // let obj = {
-      //   method: "post",
-      //   params: {id: vote.id},
-      //   url: `https://us-central1-like-1t.cloudfunctions.net/movieSearch/<id>`,
-      //   data: {...vote}
-      // }
       let {status} = await axios.post(`https://us-central1-like-1t.cloudfunctions.net/movieSearch/${vote.id}`, {...vote} )
       console.log("In redux store, updatingRating. Status=",status)
       dispatch(adjustVote(vote))

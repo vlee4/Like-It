@@ -1,5 +1,4 @@
 import React from "react";
-// import {connect} from "react-redux";
 import {withRouter, Route, Switch} from "react-router-dom";
 
 import Details from "./Components/Details";

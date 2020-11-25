@@ -1,7 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import {fetchDetails, updateRating} from "../Store/moviesReducer";
-// import "images/svg-defs.svg";
 import {ReactComponent as ThumbUp} from "../images/thumb_up_alt-black-24dp.svg";
 import {ReactComponent as ThumbDown} from "../images/thumb_down_alt-black-24dp.svg";
 // import {ReactComponent as Loading} from "../images/Loading.svg";
@@ -32,9 +31,6 @@ class Details extends React.Component {
     this.props.updateVote(voteObj)
 
     console.log(`${rating} vote received`, vote, "vote", voteObj)
-    /*
-    May have to update details with getDetails
-    */
   }
 
   render (){
@@ -90,6 +86,7 @@ const mapDispatchToProps = dispatch => {
 export default connect(mapStateToProps, mapDispatchToProps)(Details)
 
 /*
+Example of details received from a specific movie id query:
 Actors: "Connie Nielsen, Aidan Quinn, John Bell, Jack Gleeson"
 Awards: "4 wins & 8 nominations."
 BoxOffice: "N/A"

@@ -20,26 +20,24 @@ app.get("/", async (req, res)=> {
   try {
     const url = `https://www.omdbapi.com/?s=${req.query.q}&apikey=${functions.config().omdb.key}`;
       let {data} = await axios.get(url);
-      console.log("url", url)
       res.set("Access-Control-Allow-Origin", "*")
           .status(200)
           .send(data);
   } catch (error){
       console.log("Error from firebase function movie search", error)
-      res.end()
     }
 })
 
 app.get("/:id", async(req, res)=>{
   try{
     const url = `https://www.omdbapi.com/?i=${req.query.id}&plot=full&apikey=${functions.config().omdb.key}`;
-    console.log("url", url);
+
     let {data} = await axios.get(url);
     res.set("Access-Control-Allow-Origin", "*")
           .status(200)
           .send(data);
   } catch(error) {
-    console.log("Error from firebase function details search")
+    console.log("Error from firebase function details search", error)
   }
 })
 
@@ -48,23 +46,18 @@ app.post("/:id", async(req, res)=>{
     const {id, title, upVotes, downVotes} = req.body;
     const db = admin.database()
     let exists;
-    console.log("BODY", req.body)
 
     await db.ref('movies').once("value")
     .then(snapshot => {
       exists = snapshot.child(id).exists() ? "Y": "N";
       return exists;
     })
-    .catch(err => {console.log("error in post", err)})
-    console.log("exists", exists)
 
-
-    if(exists==="N"){ //entry doesn't exist yet
-      console.log(`entry doesn't exist for ${id}`)
-      db.ref(`movies/${id}`).set({id, title, upVotes, downVotes
-      })
-    } else { //entry for movie already exists
-      console.log(`${id} entry exists`);
+    if(exists==="N"){
+      //entry doesn't exist yet
+      db.ref(`movies/${id}`).set({id, title, upVotes, downVotes})
+    } else {
+      //entry for movie already exists
       let vote = upVotes===1? "upVotes": "downVotes";
       db.ref(`movies/${id}/${vote}`)
         .transaction(currentVote=>{
@@ -81,5 +74,3 @@ app.post("/:id", async(req, res)=>{
 })
 
 exports.movieSearch = functions.https.onRequest(app)
-
-// exports.rate = functions.database.ref("/movies")
