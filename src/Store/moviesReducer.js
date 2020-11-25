@@ -57,13 +57,15 @@ export const fetchDetails = (id) => {
 export const updateRating = (vote) => {
   return async dispatch => {
     try {
+      console.log("vote", vote)
       //update db
-      let {status} = await axios.post({
-        method: "post",
-        params: {id: vote.id},
-        url: `https://us-central1-like-1t.cloudfunctions.net/movieSearch/<id>`,
-        data: {...vote}
-      })
+      // let obj = {
+      //   method: "post",
+      //   params: {id: vote.id},
+      //   url: `https://us-central1-like-1t.cloudfunctions.net/movieSearch/<id>`,
+      //   data: {...vote}
+      // }
+      let {status} = await axios.post(`https://us-central1-like-1t.cloudfunctions.net/movieSearch/${vote.id}`, {...vote} )
       console.log("In redux store, updatingRating. Status=",status)
       dispatch(adjustVote(vote))
     } catch(error) {
@@ -81,7 +83,8 @@ export default function moviesReducer(state ={}, action) {
     case GET_MOVIE_DETAILS:
       return {...state, details: action.details}
     case UPDATE_VOTE:
-      let updatedDetails = {...state.details, vote: action.update}
+      let {upVotes, downVotes} = action.update
+      let updatedDetails = {...state.details, vote: {upVotes, downVotes}}
       return {...state, details: updatedDetails}
     default:
       return state;

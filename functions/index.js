@@ -5,22 +5,16 @@ const express = require("express");
 const morgan = require("morgan")
 const app = express();
 
+const admin = require("firebase-admin");
+admin.initializeApp();
+
 //Logging middleware
 app.use(morgan("dev"))
 //Middleware
-app.use(cors({origin: true}));
+app.use(cors({origin: true, allowedHeaders: ["content-type", "request-headers", "request-method" ]}));
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-// const admin = require("firebase-admin");
-// admin.initializeApp();
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onCall((request, response) => {
-//   return ("Hello from Firebase!!")
-// });
 
 app.get("/", async (req, res)=> {
   try {
@@ -52,21 +46,28 @@ app.get("/:id", async(req, res)=>{
 app.post("/:id", async(req, res)=>{
   try {
     const {id, title, upVotes, downVotes} = req.body;
-    const db = firebase.database()
+    const db = admin.database()
     let exists;
+    console.log("BODY", req.body)
+
     await db.ref('movies').once("value")
     .then(snapshot => {
-      return exists = snapshot.child(id).exists() ? "Y": "N";
+      exists = snapshot.child(id).exists() ? "Y": "N";
+      return exists;
     })
+    .catch(err => {console.log("error in post", err)})
+    console.log("exists", exists)
+
+
     if(exists==="N"){ //entry doesn't exist yet
       console.log(`entry doesn't exist for ${id}`)
       db.ref(`movies/${id}`).set({id, title, upVotes, downVotes
       })
     } else { //entry for movie already exists
       console.log(`${id} entry exists`);
-      let vote = upVotes==="1"? "upVotes": "downVotes";
+      let vote = upVotes===1? "upVotes": "downVotes";
       db.ref(`movies/${id}/${vote}`)
-        .transation(currentVote=>{
+        .transaction(currentVote=>{
           return currentVote+1;
         })
     }
@@ -75,26 +76,10 @@ app.post("/:id", async(req, res)=>{
           .end();
   }
   catch(error){
-    console.log("Error from firebase function updating rating")
+    console.log("Error from firebase function updating rating", error)
   }
 })
 
 exports.movieSearch = functions.https.onRequest(app)
 
-// exports.movieSearch = functions.https.onRequest(async(req, res)=> {
-//   //req should be movie query; may or may not need to modify depending on what is being sent
-//   cors(req, res, async ()=> {
-//     try {
-//       const url = `https://www.omdbapi.com/?s=${req.query.q}&apikey=${functions.config().omdb.key}`;
-//         let {data} = await axios.get(url);
-//         console.log("url", url)
-//         res.set("Access-Control-Allow-Origin", "*")
-//             .status(200)
-//             .send(data);
-//     } catch (error){
-//         console.log("Error from firebase function movie search", error)
-//         res.end()
-//       }
-
-//     })
-// })
+// exports.rate = functions.database.ref("/movies")

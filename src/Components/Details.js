@@ -21,15 +21,15 @@ class Details extends React.Component {
   vote(vote){
     if(!this.props.details) return null;
     let rating = vote==="up"? "up": "down";
-    let upVote = vote==="up"? 1: 0;
-    let downVote = vote==="down"? 1: 0;
+    let upVotes = vote==="up"? 1: 0;
+    let downVotes = vote==="down"? 1: 0;
     let voteObj = {
       id: this.props.details.imdbID,
       title: this.props.details.Title,
-      upVote,
-      downVote,
+      upVotes,
+      downVotes,
     }
-    // this.props.updateVote(vote)
+    this.props.updateVote(voteObj)
 
     console.log(`${rating} vote received`, vote, "vote", voteObj)
     /*
