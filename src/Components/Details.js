@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import {fetchDetails} from "../Store/moviesReducer";
+import {fetchDetails, updateRating} from "../Store/moviesReducer";
 // import "images/svg-defs.svg";
 import {ReactComponent as ThumbUp} from "../images/thumb_up_alt-black-24dp.svg";
 import {ReactComponent as ThumbDown} from "../images/thumb_down_alt-black-24dp.svg";
@@ -18,9 +18,23 @@ class Details extends React.Component {
     await this.props.getDetails(movieId)
   }
 
-  vote(e){
-    let rating = e.target.alt==="thumb_up"? "up": "down";
-    console.log(`${rating} vote received`, e.target)
+  vote(vote){
+    if(!this.props.details) return null;
+    let rating = vote==="up"? "up": "down";
+    let upVote = vote==="up"? 1: 0;
+    let downVote = vote==="down"? 1: 0;
+    let voteObj = {
+      id: this.props.details.imdbID,
+      title: this.props.details.Title,
+      upVote,
+      downVote,
+    }
+    // this.props.updateVote(vote)
+
+    console.log(`${rating} vote received`, vote, "vote", voteObj)
+    /*
+    May have to update details with getDetails
+    */
   }
 
   render (){
@@ -43,8 +57,8 @@ class Details extends React.Component {
            <div>Have you seen this movie? How was it?</div>
            <div className="voteRatings">
              <span>
-               <ThumbUp className="thumb" />
-               <ThumbDown className="thumb"/>
+               <ThumbUp className="thumb" onClick={()=>this.vote("up")} />
+               <ThumbDown className="thumb" onClick={()=>this.vote("down")}/>
               </span>
             <span>[Current Rating Here]</span>
            </div>
@@ -68,7 +82,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getDetails: (id) => dispatch(fetchDetails(id))
+    getDetails: (id) => dispatch(fetchDetails(id)),
+    updateVote: (vote) => dispatch(updateRating(vote))
   }
 }
 

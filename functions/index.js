@@ -49,6 +49,36 @@ app.get("/:id", async(req, res)=>{
   }
 })
 
+app.post("/:id", async(req, res)=>{
+  try {
+    const {id, title, upVotes, downVotes} = req.body;
+    const db = firebase.database()
+    let exists;
+    await db.ref('movies').once("value")
+    .then(snapshot => {
+      return exists = snapshot.child(id).exists() ? "Y": "N";
+    })
+    if(exists==="N"){ //entry doesn't exist yet
+      console.log(`entry doesn't exist for ${id}`)
+      db.ref(`movies/${id}`).set({id, title, upVotes, downVotes
+      })
+    } else { //entry for movie already exists
+      console.log(`${id} entry exists`);
+      let vote = upVotes==="1"? "upVotes": "downVotes";
+      db.ref(`movies/${id}/${vote}`)
+        .transation(currentVote=>{
+          return currentVote+1;
+        })
+    }
+    res.set("Access-Control-Allow-Origin", "*")
+          .status(200)
+          .end();
+  }
+  catch(error){
+    console.log("Error from firebase function updating rating")
+  }
+})
+
 exports.movieSearch = functions.https.onRequest(app)
 
 // exports.movieSearch = functions.https.onRequest(async(req, res)=> {
