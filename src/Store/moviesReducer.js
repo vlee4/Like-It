@@ -6,11 +6,12 @@ const GET_MOVIE_DETAILS = "GET_MOVIE_DETAILS";
 const UPDATE_VOTE = "UPDATE_VOTE";
 
 //ACTION CREATORS
-const startSearch = (query, movies) => {
+const startSearch = (query, movies, page) => {
   return {
     type: SEARCH_MOVIES,
     query,
-    movies
+    movies,
+    page
   }
 }
 
@@ -29,11 +30,11 @@ const adjustVote = (update) => {
 }
 
 //THUNKS
-export const searchMovies = (query) => {
+export const searchMovies = (query, page=1) => {
   return async dispatch => {
     try {
-      const {data} = await axios.get(`https://us-central1-like-1t.cloudfunctions.net/movieSearch`, {params: {q: query}})
-      dispatch(startSearch(query, data))
+      const {data} = await axios.get(`https://us-central1-like-1t.cloudfunctions.net/movieSearch`, {params: {q: query, page}})
+      dispatch(startSearch(query, data, page))
     }
     catch(error){
       console.log("Error searching for movies", error)
@@ -66,10 +67,10 @@ export const updateRating = (vote) => {
 
 
 //REDUCER
-export default function moviesReducer(state ={}, action) {
+export default function moviesReducer(state ={page:1}, action) {
   switch (action.type) {
     case SEARCH_MOVIES:
-      return {...state, query: action.query, results: action.movies}
+      return {...state, query: action.query, results: action.movies, page: action.page}
     case GET_MOVIE_DETAILS:
       return {...state, details: action.details}
     case UPDATE_VOTE:

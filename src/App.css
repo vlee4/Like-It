@@ -113,6 +113,22 @@
   width: 100%;
 }
 
+.pagination {
+  display: flex;
+  width: 9%;
+  align-self: center;
+  scroll-behavior: smooth;
+  overflow-x: scroll;
+}
+
+.currentPage {
+  background: #b237d5de;
+}
+
+.pagination::-webkit-scrollbar-thumb {
+  background-color: darkorchid;
+}
+
 /*------- Details Page--------- */
 
 .backBtn {

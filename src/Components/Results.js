@@ -1,5 +1,6 @@
 import {connect} from "react-redux"
-import {fetchDetails} from "../Store/moviesReducer"
+import Pages from "./Pages";
+import {fetchDetails, searchMovies} from "../Store/moviesReducer"
 import {Link} from "react-router-dom";
 import {ReactComponent as NoImg} from "../images/image-not-found.svg";
 
@@ -23,7 +24,6 @@ function Results(props) {
       <div className="container">Sorry, no results for {props.query} </div>
       )
     }
-
   return (
     <div className="container">
       {props.results.Response?
@@ -45,7 +45,8 @@ function Results(props) {
             })}</div>
       </div>):
       <div>Sorry, no results were found for that query</div>
-    }
+      }
+      {(props.results.totalResults>0)?(<Pages/>):""}
     </div>
   )
 }
@@ -59,7 +60,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getDetails: (id) => dispatch(fetchDetails(id))
+    getDetails: (id) => dispatch(fetchDetails(id)),
+    searchForMovies: (query, page) => dispatch(searchMovies(query, page))
   }
 }
 

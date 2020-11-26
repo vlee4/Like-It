@@ -18,7 +18,7 @@ app.use(express.urlencoded({extended: true}))
 
 app.get("/", async (req, res)=> {
   try {
-    const url = `https://www.omdbapi.com/?s=${req.query.q}&apikey=${functions.config().omdb.key}`;
+    const url = (req.query.page)?(`https://www.omdbapi.com/?s=${req.query.q}&page=${req.query.page}&apikey=${functions.config().omdb.key}`) : (`https://www.omdbapi.com/?s=${req.query.q}&apikey=${functions.config().omdb.key}`);
       let {data} = await axios.get(url);
       res.set("Access-Control-Allow-Origin", "*")
           .status(200)
