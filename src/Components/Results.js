@@ -31,12 +31,11 @@ function Results(props) {
           <div className="resultNums">There is {props.results.totalResults} results for '{props.query}'</div>
            <div className="allMovies">
              {props.results.Search.map((movie, idx) => {
-               let noImg = (movie.Poster==="N/A")? "noImgSvg":"";
                return (
                  <div key={`${idx}_${movie.imdbID}`} className=
                  "singleResult">
                    <div className="posterContainer">
-                   {movie.Poster!=="N/A"?<img src={movie.Poster} alt={`${movie.Title} poster`} className={noImg}></img>:<NoImg className={noImg}/>}</div>
+                   {movie.Poster!=="N/A"?<img src={movie.Poster} alt={`${movie.Title} poster`} ></img>:<NoImg className="noImgSvg"/>}</div>
                    <div className="movieInfo">
                       <Link to={`/Movies/${movie.imdbID}`}><div>{movie.Title}</div></Link>
                       <div>{movie.Year}</div>
