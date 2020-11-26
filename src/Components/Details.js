@@ -10,11 +10,13 @@ class Details extends React.Component {
     super()
 
     this.vote = this.vote.bind(this);
+    this.back = this.back.bind(this);
   }
 
  async componentDidMount(){
     let {movieId} = this.props.match.params;
     await this.props.getDetails(movieId)
+    console.log("Props", this.props)
   }
 
   vote(vote){
@@ -33,11 +35,16 @@ class Details extends React.Component {
     console.log(`${rating} vote received`, vote, "vote", voteObj)
   }
 
+  back(){
+    this.props.history.push("/Movies", {...this.props.movieResults})
+  }
+
   render (){
     console.log("Here's the details", this.props.details)
     const {Actors, Director, Genre, Plot, Poster, Rated, Runtime, Title } = this.props.details? this.props.details: "";
     return (
       <div className="container">
+        <button className="backBtn" type="button" onClick={this.back}>Back</button>
        {this.props.details?
        (<div className="movieContainer">
          <img src={Poster} alt={`${Title} Poster`}></img>
@@ -72,7 +79,8 @@ class Details extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    details: state.movieResults.details
+    details: state.movieResults.details,
+    movieResults: state.movieResults
   }
 }
 

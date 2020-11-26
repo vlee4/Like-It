@@ -115,6 +115,14 @@
 
 /*------- Details Page--------- */
 
+.backBtn {
+  width: 5%;
+  min-width: 5%;
+  position: absolute;
+  top: 25px;
+  left: 10px;
+}
+
 .movieContainer {
   display: grid;
   grid-template-columns: 1fr 2fr;
