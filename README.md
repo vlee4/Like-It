@@ -66,7 +66,7 @@ Once you have the **Firebase CLI** make sure you do the following:
 
 - Then navigate to `functions/index.js` and find all the occurances of `functions.config().omdb.key` with `functions.config().[whateverYouNamedYourKey]`.
 
-Finally, after running `npm install` the app can be run locally with `npm run start` and will be hosted at [localhost:3000](http://localhost:3000/).
+Finally, after running `npm install` and `firebase deploy --only functions` the app can be run locally with `npm run start` and will be hosted at [localhost:3000](http://localhost:3000/).
 
 **Note**: Ensure that dependencies are installed both in the root project folder and within the Firebase Functions folder (/functions).
 
