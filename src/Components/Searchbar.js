@@ -6,7 +6,7 @@ class SearchBar extends React.Component {
   constructor(){
     super()
     this.state = {
-      movieName: "Spirited Away",
+      movieName: "",
       query: ''
     }
     this.change = this.change.bind(this)

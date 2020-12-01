@@ -99,7 +99,7 @@ export default function moviesReducer(state ={page:1, ratingsStats: {up:0, down:
       let {upVotes, downVotes} = action.update
       let updatedUp = upVotes+state.vote.upVotes;
       let updatedDown = downVotes+state.vote.downVotes;
-      return {...state, vote: {upVotes: updatedUp, downVotes: updatedDown}, ratingStats: {...action.data}}
+      return {...state, vote: {upVotes: updatedUp, downVotes: updatedDown}, ratingsStats: {...action.data}}
     case GET_RATING:
       return {...state, ratingsStats: action.ratings}
     default:

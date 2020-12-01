@@ -45,8 +45,10 @@ app.get("/:id/ratings", async(req, res)=>{
   try{
     const db = admin.database();
     await db.ref(`movies/${req.query.id}`).on("value", snap => {
-     let {upVotes, downVotes} = snap.val();
-      res.status(200).send({upVotes, downVotes})
+      let results = (snap.val()&&snap.val().upVotes)? snap.val():{upVotes:0, downVotes: 0};
+      res.set("Access-Control-Allow-Origin", "*")
+        .status(200)
+        .send(results)
     })
 
   } catch(error){
@@ -90,13 +92,13 @@ app.post("/:id", async(req, res)=>{
           })
       }
     }
-   let ratings = await db.ref(`movies/${req.query.id}`).once("value").then(snap => {
-     let {upVotes, downVotes} = snap.val()
-      return {upVotes, downVotes}
-     })
-    res.set("Access-Control-Allow-Origin", "*")
-          .status(200)
-          .send(ratings);
+
+    await db.ref(`movies/${id}`).on("value", snap => {
+      let results = (snap.val()&&snap.val().upVotes)? snap.val():{upVotes:0, downVotes: 0};
+      res.set("Access-Control-Allow-Origin", "*")
+        .status(200)
+        .send(results)
+    })
   }
   catch(error){
     console.log("Error from firebase function updating rating", error)
