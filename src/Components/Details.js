@@ -10,9 +10,13 @@ import {ReactComponent as NoImg} from "../images/image-not-found.svg";
 class Details extends React.Component {
   constructor(){
     super()
+    this.state = {
+      voted: "", //up/down
+    }
 
     this.vote = this.vote.bind(this);
     this.back = this.back.bind(this);
+    // this.toggleThum = this.toggleThumb.bind(this);
   }
 
  async componentDidMount(){
@@ -21,21 +25,56 @@ class Details extends React.Component {
     console.log("Props", this.props)
   }
 
-  vote(vote){
-    if(!this.props.details) return null;
-    let rating = vote==="up"? "up": "down";
-    let upVotes = vote==="up"? 1: 0;
-    let downVotes = vote==="down"? 1: 0;
-    let voteObj = {
-      id: this.props.details.imdbID,
-      title: this.props.details.Title,
-      upVotes,
-      downVotes,
-    }
-    this.props.updateVote(voteObj)
+  //   toggleThumb(vote){
+  //   let thumb = document.getElementById(`${this.props.match.params.movieId}_${vote}`);
+  //   if(thumb.classList){
+  //     thumb.classList.toggle("thumb-disabled")
+  //   } else {
+  //     let classes = thumb.className.split(" ");
+  //     let i = classes.indexOf("thumb-disabled");
 
-    console.log(`${rating} vote received`, vote, "vote", voteObj)
+  //     if(i>=0){ //if disabled already set
+  //       classes.splice(i, 1);
+  //     } else {
+  //       classes.push("thumb-disabled");
+  //       thumb.className = classes.join(" ");
+  //     }
+  //   }
+  // }
+
+  async vote(vote){
+    if(!this.props.details) return null;
+    if(this.state.voted!==""){
+      this.setState({voted: ""});
+      let upVotes = vote==="up"? -1: 0;
+      let downVotes = vote==="down"? -1: 0;
+      let voteObj = {
+        id: this.props.details.imdbID,
+        title: this.props.details.Title,
+        upVotes,
+        downVotes,
+      }
+      await this.props.updateVote(voteObj)
+      //call this.props.updateVote() w/ decreased
+    }
+    else{
+      let upVotes = vote==="up"? 1: 0;
+      let downVotes = vote==="down"? 1: 0;
+      let voteObj = {
+        id: this.props.details.imdbID,
+        title: this.props.details.Title,
+        upVotes,
+        downVotes,
+      }
+      await this.props.updateVote(voteObj)
+      this.setState({voted: vote})
+      // this.toggleThumb(vote)
+
+    }
+
+    console.log("voted?", this.state.voted)
   }
+
 
   back(){
     this.props.history.push("/Movies", {...this.props.movieResults})
@@ -62,8 +101,9 @@ class Details extends React.Component {
            <div>Have you seen this movie? How was it?</div>
            <div className="voteRatings">
              <span>
-               <ThumbUp className="thumb" onClick={()=>this.vote("up")} />
-               <ThumbDown className="thumb" onClick={()=>this.vote("down")}/>
+               <button className={this.state.voted==="up"?"thumb-selected": "thumb"} name="up" value="up" type="button" onClick={()=>this.vote("up")} ><ThumbUp id={`${this.props.match.params.movieId}_up`} /></button>
+
+               <button className={this.state.voted==="down"?"thumb-selected": "thumb"} name="down" value="down" type="button" onClick={()=>this.vote("down")}><ThumbDown id={`${this.props.match.params.movieId}_down`}/></button>
               </span>
             <span>[Current Rating Here]</span>
            </div>
