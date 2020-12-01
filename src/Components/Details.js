@@ -44,28 +44,38 @@ class Details extends React.Component {
 
   async vote(vote){
     if(!this.props.details) return null;
+    let voteObj = {
+      id: this.props.details.imdbID,
+      title: this.props.details.Title
+    }
+    //toggle from up/down voted already cast
     if(this.state.voted!==""){
-      this.setState({voted: ""});
-      let upVotes = vote==="up"? -1: 0;
-      let downVotes = vote==="down"? -1: 0;
-      let voteObj = {
-        id: this.props.details.imdbID,
-        title: this.props.details.Title,
-        upVotes,
-        downVotes,
+
+      //if current vote is diff than clicked, decrease cur, increase other
+      if(this.state.voted!==vote){
+        voteObj.upVotes = vote==="up"? 1: -1;
+        voteObj.downVotes = vote==="down"? 1: -1;
+        this.setState({voted: vote})
       }
+      else {
+        //if current vote is same as clicked, decrease
+        voteObj.upVotes = vote==="up"? -1: 0;
+        voteObj.downVotes = vote==="down"? -1: 0;
+        this.setState({voted: ""});
+      }
+
       await this.props.updateVote(voteObj)
       //call this.props.updateVote() w/ decreased
     }
-    else{
-      let upVotes = vote==="up"? 1: 0;
-      let downVotes = vote==="down"? 1: 0;
-      let voteObj = {
-        id: this.props.details.imdbID,
-        title: this.props.details.Title,
-        upVotes,
-        downVotes,
-      }
+    else{ //prev vote note selected
+      voteObj.upVotes = vote==="up"? 1: 0;
+      voteObj.downVotes = vote==="down"? 1: 0;
+      // let voteObj = {
+      //   id: this.props.details.imdbID,
+      //   title: this.props.details.Title,
+      //   upVotes,
+      //   downVotes,
+      // }
       await this.props.updateVote(voteObj)
       this.setState({voted: vote})
       // this.toggleThumb(vote)

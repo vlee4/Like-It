@@ -58,12 +58,24 @@ app.post("/:id", async(req, res)=>{
       db.ref(`movies/${id}`).set({id, title, upVotes, downVotes})
     } else {
       //entry for movie already exists
-      let vote = upVotes!==0? "upVotes": "downVotes";
-      let voteVal = upVotes!==0? upVotes: downVotes;
-      db.ref(`movies/${id}/${vote}`)
+      //if both up & down have values
+      if((upVotes!==0)&&(downVotes!==0)){
+        db.ref(`movies/${id}/upVotes`)
         .transaction(currentVote=>{
-          return currentVote+voteVal;
+          return currentVote+upVotes;
         })
+        db.ref(`movies/${id}/downVotes`).transaction(currentVote => {
+          return currentVote+downVotes;
+        })
+      }
+      else {
+        let vote = upVotes!==0? "upVotes": "downVotes";
+        let voteVal = upVotes!==0? upVotes: downVotes;
+        db.ref(`movies/${id}/${vote}`)
+          .transaction(currentVote=>{
+            return currentVote+voteVal;
+          })
+      }
     }
     res.set("Access-Control-Allow-Origin", "*")
           .status(200)
