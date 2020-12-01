@@ -216,12 +216,6 @@ body {
   fill: #8f47ea;
 }
 
-/* .thumb:disabled svg {
-  fill: #8f47ea;
-  margin: 0em 0.25em;
-  cursor: default;
-} */
-
 .thumb-selected {
   padding: 0;
   border: none;

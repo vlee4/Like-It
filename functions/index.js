@@ -41,6 +41,19 @@ app.get("/:id", async(req, res)=>{
   }
 })
 
+app.get("/:id/ratings", async(req, res)=>{
+  try{
+    const db = admin.database();
+    await db.ref(`movies/${req.query.id}`).on("value", snap => {
+     let {upVotes, downVotes} = snap.val();
+      res.status(200).send({upVotes, downVotes})
+    })
+
+  } catch(error){
+    console.log("Error getting rating", error)
+  }
+})
+
 app.post("/:id", async(req, res)=>{
   try {
     const {id, title, upVotes, downVotes} = req.body;
@@ -77,9 +90,13 @@ app.post("/:id", async(req, res)=>{
           })
       }
     }
+   let ratings = await db.ref(`movies/${req.query.id}`).once("value").then(snap => {
+     let {upVotes, downVotes} = snap.val()
+      return {upVotes, downVotes}
+     })
     res.set("Access-Control-Allow-Origin", "*")
           .status(200)
-          .end();
+          .send(ratings);
   }
   catch(error){
     console.log("Error from firebase function updating rating", error)
