@@ -10,11 +10,6 @@ body {
   position: relative;
 }
 
-/* #root {
-  min-height: 100vh;
-  position: relative;
-} */
-
 .App {
   /* display: flex; */
   /* flex-direction: column; */
@@ -28,11 +23,19 @@ body {
   display: block;
 }
 
+.searchContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 #title {
   margin: 0em;
   padding: 1.5em 0em;
 }
 .content {
+  display: flex;
+  justify-content: center;
   background: linear-gradient(
     163deg,
     rgba(255, 255, 255, 0.20316) 10%,
@@ -70,6 +73,7 @@ body {
 .container {
   display: flex;
   flex-direction: column;
+  align-self: center;
   box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
   outline: 0.15px solid black;
   margin: 1em 0em;
@@ -144,12 +148,25 @@ body {
   width: 100%;
 }
 
-.pagination {
+.pageNav {
   display: flex;
-  width: 9%;
+  /* width: 9%; */
   align-self: center;
-  scroll-behavior: smooth;
-  overflow-x: scroll;
+  /* scroll-behavior: smooth; */
+  /* overflow-x: scroll; */
+}
+
+.pagination li {
+  padding: 0.2em;
+  margin: 0.2em;
+  outline-style: solid;
+  outline-width: thin;
+}
+.pagination li a {
+  color: black;
+}
+.pagination li a:hover {
+  text-decoration: none;
 }
 
 .currentPage {

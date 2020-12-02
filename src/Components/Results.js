@@ -1,5 +1,6 @@
-import {connect} from "react-redux"
-import Pages from "./Pages";
+import {connect} from "react-redux";
+// import Pages from "./Pages";
+import Paginate from "./Pagination";
 import {fetchDetails, searchMovies} from "../Store/moviesReducer"
 import {Link} from "react-router-dom";
 import {ReactComponent as NoImg} from "../images/image-not-found.svg";
@@ -46,7 +47,8 @@ function Results(props) {
       </div>):
       <div>Sorry, no results were found for that query</div>
       }
-      {(props.results.totalResults>0)?(<Pages/>):""}
+      {/* {(props.results.totalResults>0)?(<Pages/>):""} */}
+      {(props.results.totalResults>0)?(<Paginate/>):""}
     </div>
   )
 }

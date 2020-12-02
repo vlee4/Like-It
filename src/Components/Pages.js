@@ -1,6 +1,7 @@
 import {connect} from "react-redux"
 import React from "react"
 import {searchMovies} from "../Store/moviesReducer";
+// import Pagination from "react-bootstrap/Pagination";
 
 class Pages extends React.Component {
   constructor(){
@@ -11,7 +12,6 @@ class Pages extends React.Component {
       lastPage: 1,
     }
     this.findPage = this.findPage.bind(this);
-    // this.curPageRef = React.createRef();
   }
 
   componentDidMount(){
