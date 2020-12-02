@@ -77,8 +77,8 @@ class Details extends React.Component {
          <div className="movieDetails">
             <h2>{Title}</h2>
             <div className="detail">{Plot}</div>
-            <div className="detail"><strong>Director:</strong>{Director}</div>
-            <div className="detail"><strong>Actors:</strong>{Actors}</div>
+            <div className="detail"><strong>Director: </strong>{Director}</div>
+            <div className="detail"><strong>Actors: </strong>{Actors}</div>
             <div className="detail"><strong>Genre: </strong>{Genre}</div>
             <div className="detail"><strong>Rated: </strong>{Rated}</div>
             <div className="detail"><strong>Runtime: </strong>{Runtime}</div>
@@ -90,7 +90,7 @@ class Details extends React.Component {
 
                <button className={this.state.voted==="down"?"thumb-selected": "thumb"} name="down" value="down" type="button" onClick={()=>this.vote("down")}><ThumbDown id={`${this.props.match.params.movieId}_down`}/></button>
               </span>
-            <span>{`${this.props.movieResults.ratingsStats.upVotes}/${this.props.movieResults.ratingsStats.downVotes}`}</span>
+            <span className="ratingsStats">{`${this.props.movieResults.ratingsStats.upVotes|""}/${this.props.movieResults.ratingsStats.downVotes|""}`}</span>
            </div>
           </div>
          </div>

@@ -227,3 +227,7 @@ body {
   margin: 0em 0.25em;
   cursor: default;
 }
+
+.ratingsStats {
+  color: grey;
+}

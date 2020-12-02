@@ -46,8 +46,7 @@ app.get("/:id/ratings", async(req, res)=>{
     const db = admin.database();
     await db.ref(`movies/${req.query.id}`).on("value", snap => {
       let results = (snap.val()&&snap.val().upVotes)? snap.val():{upVotes:0, downVotes: 0};
-      res.set("Access-Control-Allow-Origin", "*")
-        .status(200)
+      res.status(200)
         .send(results)
     })
 
