@@ -29,10 +29,15 @@ body {
   width: 100%;
 }
 
-#title {
+#title h1 {
   margin: 0em;
   padding: 1.5em 0em;
+  color: black;
 }
+#title:hover {
+  text-decoration: none;
+}
+
 .content {
   display: flex;
   justify-content: center;
@@ -77,18 +82,11 @@ body {
   box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2);
   outline: 0.15px solid black;
   margin: 1em 0em;
-  padding: 1em 0em;
+  padding: 1em 0.5em;
   width: 100%;
 }
 
 /* .allMovies {
-  display: grid;
-  grid-template-columns: 50% 50%;
-  grid-template-rows: 20% 20% 20% 20% 20%;
-  grid-auto-rows: minmax(50%, 100%);
-} */
-
-.allMovies {
   display: grid;
   gap: 1.25em 1.25em;
   grid-template-columns: repeat(auto-fill, 22%);
@@ -96,15 +94,11 @@ body {
   grid-auto-flow: row;
   align-content: center;
   justify-content: center;
-}
-
-/* .singleResult {
-  display: flex;
-  flex-direction: row;
-  margin: 1em 1em;
-  border: black dotted;
-  align-items: center;
 } */
+
+.allMovies {
+  padding: 2em;
+}
 
 .resultNums {
   padding-bottom: 0.5em;
@@ -118,15 +112,9 @@ body {
   justify-content: center;
   align-items: center;
   justify-items: center;
-  /* height: 400px; */
+  height: 100%;
   overflow: hidden;
 }
-
-/* .singleResult img {
-  height: 100%;
-  width: auto;
-  padding: 0% 2.5%;
-} */
 
 .posterContainer {
   max-width: 100%;
@@ -148,33 +136,31 @@ body {
   width: 100%;
 }
 
+/* ----Pagination ---- */
+
 .pageNav {
   display: flex;
-  /* width: 9%; */
   align-self: center;
-  /* scroll-behavior: smooth; */
-  /* overflow-x: scroll; */
+  margin: 1em;
 }
 
 .pagination li {
-  padding: 0.2em;
   margin: 0.2em;
+  outline-color: grey;
   outline-style: solid;
   outline-width: thin;
 }
 .pagination li a {
   color: black;
+  padding: 0.2em;
 }
 .pagination li a:hover {
   text-decoration: none;
+  background: rgb(240, 106, 240);
 }
 
 .currentPage {
   background: #b237d5de;
-}
-
-.pagination::-webkit-scrollbar-thumb {
-  background-color: darkorchid;
 }
 
 /*------- Details Page--------- */

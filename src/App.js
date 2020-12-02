@@ -1,6 +1,7 @@
 import './App.css';
 import React from "react";
 import Routes from "./Routes"
+import {Link} from "react-router-dom";
 
 
 class App extends React.Component {
@@ -8,7 +9,7 @@ class App extends React.Component {
 render(){
   return (
     <div className="App">
-      <h1 id="title">Like 1t</h1>
+    <Link id="title" to={`/`}><h1 >Like 1t</h1></Link>
       <div className="content">
         <Routes/>
       </div>

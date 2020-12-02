@@ -25,8 +25,6 @@ class Paginate extends React.Component {
   }
 
   render(){
-    // let pageNums = Math.ceil(this.props.resultsNum/10);
-    // let pages = Array.from(Array(pageNums).keys());
 
     if(!this.props.resultsNum){
       return (
@@ -40,10 +38,10 @@ class Paginate extends React.Component {
       <div className="pageNav">
         <Pagination
           hideDisabled
-          prevPageText="Prev"
-          nextPageText="Next"
-          firstPageText="First"
-          lastPageText="Last"
+          prevPageText="<"
+          nextPageText=">"
+          firstPageText="<<"
+          lastPageText=">>"
           activePage={this.state.currentPage}
           activeClass={"currentPage"}
           itemsCountPerPage={10}

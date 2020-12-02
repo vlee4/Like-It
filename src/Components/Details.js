@@ -4,7 +4,7 @@ import {fetchDetails, updateRating, getRatings} from "../Store/moviesReducer";
 import {ReactComponent as ThumbUp} from "../images/thumb_up_alt-black-24dp.svg";
 import {ReactComponent as ThumbDown} from "../images/thumb_down_alt-black-24dp.svg";
 import {ReactComponent as NoImg} from "../images/image-not-found.svg";
-
+import Image from "react-bootstrap/Image";
 // import {ReactComponent as Loading} from "../images/Loading.svg";
 
 class Details extends React.Component {
@@ -73,7 +73,10 @@ class Details extends React.Component {
         <button className="backBtn" type="button" onClick={this.back}>Back</button>
        {this.props.details?
        (<div className="movieContainer">
-        {Poster!=="N/A"? <img src={Poster} alt={`${Title} Poster`}></img>:<NoImg className="noImgSvg"/>}
+        {Poster!=="N/A"?
+        <Image src={Poster} alt={`${Title} Poster`}/>:
+        //  <img src={Poster} alt={`${Title} Poster`}></img>:
+         <NoImg className="noImgSvg"/>}
          <div className="movieDetails">
             <h2>{Title}</h2>
             <div className="detail">{Plot}</div>
