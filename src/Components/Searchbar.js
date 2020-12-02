@@ -1,6 +1,6 @@
 import React from "react";
-import {connect} from "react-redux"
-import {searchMovies} from "../Store/moviesReducer"
+import {connect} from "react-redux";
+import {searchMovies} from "../Store/moviesReducer";
 
 class SearchBar extends React.Component {
   constructor(){
