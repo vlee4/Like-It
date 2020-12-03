@@ -8,8 +8,8 @@ import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import CardDeck from "react-bootstrap/CardDeck";
-import CardColumns from "react-bootstrap/CardColumns";
+// import CardDeck from "react-bootstrap/CardDeck";
+// import CardColumns from "react-bootstrap/CardColumns";
 
 function Results(props) {
   console.log("Props", props)
