@@ -9,7 +9,7 @@ class App extends React.Component {
 render(){
   return (
     <div className="App">
-    <h1 id="title"><Link to={`/`}>Like 1t</Link></h1>
+    <h1 id="title"><Link to={`/`}>L1ke It</Link></h1>
       <div className="content">
         <Routes/>
       </div>
