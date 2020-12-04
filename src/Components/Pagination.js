@@ -23,7 +23,7 @@ class Paginate extends React.Component {
   findPage(pageNum){
     // this.setState({currentPage: pageNum})
     this.props.searchForMovies(this.props.query, pageNum)
-    console.log('finding page: ', pageNum)
+    // console.log('finding page: ', pageNum)
   }
 
   render(){

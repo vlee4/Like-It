@@ -87,7 +87,7 @@ export const getRatings = (id) => {
 
 
 //REDUCER
-export default function moviesReducer(state ={page:1, ratingsStats: {up:0, down:0}, vote:{upVotes:0, downVotes: 0}}, action) {
+export default function moviesReducer(state ={page:1, ratingsStats: {upVotes:0, downVotes:0}, vote:{upVotes:0, downVotes: 0}}, action) {
   switch (action.type) {
     case SEARCH_MOVIES:
       return {...state, query: action.query, results: action.movies, page: action.page}
