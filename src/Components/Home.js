@@ -11,3 +11,19 @@ function Home(){
 }
 
 export default connect()(Home);
+
+
+/*
+TO DO:
+- Create onClick function that triggers curtain animation
+- then triggers Link click
+
+@keyframes raiseCurtain {
+  from {
+    height: 100vh;
+  }
+  to {
+    height: 0vh;
+  }
+}
+*/

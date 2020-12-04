@@ -12,7 +12,7 @@ import Col from "react-bootstrap/Col";
 // import CardColumns from "react-bootstrap/CardColumns";
 
 function Results(props) {
-  console.log("Props", props)
+  // console.log("Props", props)
   if(!props.query){
     return (
       <div className="container">

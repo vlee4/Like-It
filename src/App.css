@@ -131,13 +131,15 @@ body {
   margin: 2em 0em;
   /* width: 100%; */
 
-  background-color: #464040;
-  background: #f8f8f8;
-  border: solid #ffffff5c 1px;
+  /* background-color: #464040; */
+  border: black solid 2em;
+  border-width: 1em 0.5em 2em 0.5em;
   border-radius: 3px;
-  box-shadow: 5px 5px 21px rgba(255, 226, 122, 0.5);
-  -webkit-box-shadow: 5px 5px 21px rgba(255, 226, 122, 0.5);
-  -moz-box-shadow: 5px 5px 21px rgba(255, 226, 122, 0.5);
+  background: #f8f8f8db;
+
+  box-shadow: inset 0px -6px 21px rgb(0 0 0 / 69%);
+  -webkit-box-shadow: inset 0px -6px 21px rgb(0 0 0 / 69%);
+  -moz-box-shadow: inset 0px -6px 21px rgb(0 0 0 / 69%);
 }
 
 #title {
@@ -215,7 +217,7 @@ body {
   /* box-shadow: 12px 12px 2px 1px rgba(0, 0, 255, 0.2); */
   /* outline: 0.15px solid black; */
   margin: 1em 0em;
-  padding: 1em 0.5em;
+  padding: 1em 1.5em;
   width: 100%;
 
   /* border: solid;
@@ -233,9 +235,9 @@ body {
   justify-content: center;
 } */
 
-.allMovies {
+/* .allMovies {
   padding: 2em;
-}
+} */
 
 .resultNums {
   padding-bottom: 0.5em;
@@ -322,11 +324,17 @@ li.currentPage a {
 /*------- Details Page--------- */
 
 .backBtn {
-  width: 5%;
+  /* width: 5%; */
   min-width: 5%;
   position: absolute;
-  top: 25px;
-  left: 10px;
+  top: 120px;
+  left: 8px;
+  border: none;
+  background: none;
+}
+
+.backBtn svg {
+  fill: white;
 }
 
 .movieContainer {

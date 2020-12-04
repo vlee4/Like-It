@@ -4,6 +4,7 @@ import {fetchDetails, updateRating, getRatings} from "../Store/moviesReducer";
 import {ReactComponent as ThumbUp} from "../images/thumb_up_alt-black-24dp.svg";
 import {ReactComponent as ThumbDown} from "../images/thumb_down_alt-black-24dp.svg";
 import {ReactComponent as NoImg} from "../images/image-not-found.svg";
+import {ReactComponent as BackArrow} from "../images/back-arrow-36dp.svg";
 import Image from "react-bootstrap/Image";
 // import {ReactComponent as Loading} from "../images/Loading.svg";
 
@@ -70,7 +71,7 @@ class Details extends React.Component {
     const {Actors, Director, Genre, Plot, Poster, Rated, Runtime, Title } = this.props.details? this.props.details: "";
     return (
       <div className="container">
-        <button className="backBtn" type="button" onClick={this.back}>Back</button>
+        <button className="backBtn" type="button" onClick={this.back}><BackArrow/></button>
        {this.props.details?
        (<div className="movieContainer">
         {Poster!=="N/A"?
