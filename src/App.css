@@ -302,10 +302,10 @@ body {
 }
 .pagination li a:hover {
   text-decoration: none;
-  background: #f3b807fc;
+  background: rgb(236 225 19);
   color: black;
   outline: thin black;
-  outline-style: dashed;
+  outline-style: solid;
 }
 
 /* .currentPage {
@@ -317,7 +317,7 @@ li.currentPage a {
   background: #f3b807fc;
   color: black;
   outline: thin black;
-  outline-style: dashed;
+  outline-style: solid;
   font-weight: 500;
 }
 
@@ -337,11 +337,15 @@ li.currentPage a {
   fill: white;
 }
 
+.detailsContainer {
+  margin-top: 2em;
+}
+
 .movieContainer {
-  display: grid;
+  /* display: grid;
   grid-template-columns: 1fr 2fr;
-  padding: 1em;
-  justify-items: center;
+  padding: 1em;*/
+  /* justify-items: center; */
   align-items: center;
 
   border: 0.1em white solid;
@@ -351,6 +355,10 @@ li.currentPage a {
 
 .movieDetails {
   text-align: left;
+}
+
+.detailsPoster {
+  max-width: 100%;
 }
 
 .detail {
