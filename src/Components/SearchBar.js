@@ -29,7 +29,6 @@ class SearchBar extends React.Component {
          <input name="search" type="text" placeholder="Search for a movie" ref={this.inputRef} value={this.state.query} onChange={this.change}></input>
         <button name="search" type='button'onClick={this.search}>Search</button>
         </span>
-        {/* {this.state.movieName? (<div><strong>You searched for:</strong> {this.state.movieName}</div>): ""} */}
       </div>
     )
   }

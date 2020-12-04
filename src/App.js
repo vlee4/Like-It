@@ -14,9 +14,9 @@ render(){
         <Routes/>
       </div>
       <div id="footer">
-        <div>Last updated: November 2020</div>
+        <div>Last updated: December 2020</div>
         <div>Created by vLEE</div>
-        <div><a href="https://github.com/vlee4/Like-It">Source Code</a></div>
+        <div className="sourceCode"><a href="https://github.com/vlee4/Like-It">Source Code</a></div>
       </div>
     </div>
   );

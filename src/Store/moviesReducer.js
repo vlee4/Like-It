@@ -67,7 +67,6 @@ export const updateRating = (vote) => {
   return async dispatch => {
     try {
       let {data} = await axios.post(`https://us-central1-like-1t.cloudfunctions.net/movieSearch/${vote.id}`, {...vote} )
-      console.log("In redux store, updatingRating. Status=",data)
       dispatch(adjustVote(vote, data))
     } catch(error) {
       console.log("Error updating movie's ratings", error)
@@ -79,7 +78,6 @@ export const getRatings = (id) => {
   return async dispatch => {
     try{
        let {data} = await axios.get(`https://us-central1-like-1t.cloudfunctions.net/movieSearch/<id>/ratings`, {params: {id}});
-       console.log("getting rating data?", data)
        dispatch(fetchRating(data))
     } catch (error) {
       console.log("Error getting movie's ratings", error)

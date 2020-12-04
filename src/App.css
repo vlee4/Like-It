@@ -399,6 +399,17 @@ body {
   -moz-box-shadow: 0 -10px 20px rgba(173, 162, 142, 1);
 }
 
+.sourceCode a {
+  color: #e4bf52;
+  font-weight: 700;
+}
+
+.sourceCode a:hover {
+  color: #e4bf52;
+  text-decoration: none;
+  text-shadow: #e4bf52 1px 0 10px;
+}
+
 /* ----------Searchbar----------- */
 .Searchbar {
   display: flex;
@@ -496,6 +507,19 @@ body {
   align-self: center;
   margin: 0em 2em;
   width: 100%;
+}
+
+.movieInfo a {
+  color: black;
+  text-shadow: #e4bf52 2px 0 1px;
+}
+
+.movieInfo a:hover {
+  text-shadow: #e4bf52 7px 0 5px;
+}
+
+.card-title {
+  margin: 0em 0.25em 0.5em 0.25em;
 }
 
 /* ----Pagination ---- */

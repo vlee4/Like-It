@@ -6,9 +6,7 @@ import {ReactComponent as ThumbDown} from "../images/thumb_down_alt-black-24dp.s
 import {ReactComponent as NoImg} from "../images/image-not-found.svg";
 import {ReactComponent as BackArrow} from "../images/back-arrow-36dp.svg";
 import Image from "react-bootstrap/Image";
-// import {ReactComponent as Loading} from "../images/Loading.svg";
 
-import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -84,7 +82,6 @@ class Details extends React.Component {
          <Col lg={4} xl={4}>
         {Poster!=="N/A"?
         <Image className="detailsPoster" src={Poster} alt={`${Title} Poster`}/>:
-        //  <img src={Poster} alt={`${Title} Poster`}></img>:
          <NoImg className="noImgSvg"/>}</Col>
          <Col lg={8} xl={8}>
          <div className="movieDetails">
@@ -137,32 +134,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Details)
-
-/*
-Example of details received from a specific movie id query:
-Actors: "Connie Nielsen, Aidan Quinn, John Bell, Jack Gleeson"
-Awards: "4 wins & 8 nominations."
-BoxOffice: "N/A"
-Country: "Canada, Ireland"
-DVD: "N/A"
-Director: "Vic Sarin"
-Genre: "Drama, Family"
-Language: "English"
-Metascore: "52"
-Plot: ...
-Poster: "https://m.media-amazon.com/images/M/MV5BMjE4ODc3MDQ0NV5BMl5BanBnXkFtZTcwMjI3NTkyMw@@._V1_SX300.jpg"
-Production: "N/A"
-Rated: "PG"
-Ratings: (3) [{…}, {…}, {…}]
-Released: "13 Feb 2010"
-Response: "True"
-Runtime: "101 min"
-Title: "A Shine of Rainbows"
-Type: "movie"
-Website: "N/A"
-Writer: "Vic Sarin, Catherine Spear, Dennis Foon, Lillian Beckwith (novel)"
-Year: "2009"
-imdbID: "tt1014774"
-imdbRating: "7.1"
-imdbVotes: "2,153"
-*/

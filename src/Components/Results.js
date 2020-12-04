@@ -3,16 +3,14 @@ import Paginate from "./Pagination";
 import {fetchDetails, searchMovies} from "../Store/moviesReducer"
 import {Link} from "react-router-dom";
 import {ReactComponent as NoImg} from "../images/image-not-found.svg";
-// import Image from "react-bootstrap/Image";
+
 import Card from "react-bootstrap/Card";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-// import CardDeck from "react-bootstrap/CardDeck";
-// import CardColumns from "react-bootstrap/CardColumns";
+
 
 function Results(props) {
-  // console.log("Props", props)
   if(!props.query){
     return (
       <div className="container">
@@ -46,7 +44,6 @@ function Results(props) {
                    <div className="posterContainer">
                    {movie.Poster!=="N/A"?
                    <Card.Img src={movie.Poster} alt={`${movie.Title} poster`}/>:
-                  //  <img src={movie.Poster} alt={`${movie.Title} poster`} ></img>:
                    <NoImg className="noImgSvg"/>}
                    </div>
                    <div className="movieInfo">
