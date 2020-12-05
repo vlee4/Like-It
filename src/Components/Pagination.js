@@ -6,15 +6,8 @@ import {connect} from "react-redux"
 class Paginate extends React.Component {
   constructor(){
     super()
-    this.state={
-      currentPage: 1,
-    }
 
     this.findPage = this.findPage.bind(this)
-  }
-
-  componentDidMount(){
-    console.log("Page mount, page=", this.props.page)
   }
 
   findPage(pageNum){
