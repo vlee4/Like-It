@@ -1,5 +1,7 @@
 # Like 1t
 
+![Searching and rating demo](search-and-rate.gif)
+
 This project was made as a simple, single-page web application that allows the user to:
 
 - Search for a movie
@@ -70,6 +72,8 @@ Finally, after running `npm install` and `firebase deploy --only functions` the 
 
 **Note**: Ensure that dependencies are installed both in the root project folder and within the Firebase Functions folder (/functions).
 
-## Future Potential Features
+## Future Improvements / Potential Features
 
 - [ ] Create a page the displays all movies rated by users. Currently, movies rated by users are only recorded in the Realtime Database and don't make any apparent changes on the front end of the app.
+
+- [ ] Add fallback images for svgs
