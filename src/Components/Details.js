@@ -74,11 +74,11 @@ class Details extends React.Component {
     const {Actors, Director, Genre, Plot, Poster, Rated, Runtime, Title } = this.props.details? this.props.details: "";
     return (
       <Container className="detailsContainer" fluid="sm xs xl">
-      {/* <div className="container"> */}
+
         <button className="backBtn" type="button" onClick={this.back}><BackArrow/></button>
        {this.props.details?
        (<Row className="movieContainer" >
-         {/* <div className="movieContainer"> */}
+
          <Col lg={4} xl={4}>
         {Poster!=="N/A"?
         <Image className="detailsPoster" src={Poster} alt={`${Title} Poster`}/>:
@@ -106,12 +106,12 @@ class Details extends React.Component {
           </div>
          </div>
          </Col>
-       {/* </div> */}
+
        </Row>)
        :(<div >
          <img className="loading" src="/Loading.svg" alt="Loading"></img>
          </div>)}
-      {/* </div> */}
+
       </Container>
     )
 

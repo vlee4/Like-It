@@ -3,6 +3,15 @@
    zoom: 1;
 }
 
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+h1,
+h2 {
+  font-family: "Alef", sans-serif;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -377,6 +386,8 @@ body {
   box-shadow: 0 -10px 20px rgba(173, 162, 142, 1);
   -webkit-box-shadow: 0 -10px 20px rgba(173, 162, 142, 1);
   -moz-box-shadow: 0 -10px 20px rgba(173, 162, 142, 1);
+
+  font-weight: 300;
 }
 
 .sourceCode a {
