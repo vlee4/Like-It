@@ -14,16 +14,11 @@ class Paginate extends React.Component {
   }
 
   componentDidMount(){
-    // if(this.props.page){
-    //   this.setState({currentPage: this.props.page})
-    // }
     console.log("Page mount, page=", this.props.page)
   }
 
   findPage(pageNum){
-    // this.setState({currentPage: pageNum})
     this.props.searchForMovies(this.props.query, pageNum)
-    // console.log('finding page: ', pageNum)
   }
 
   render(){

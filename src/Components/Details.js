@@ -26,7 +26,7 @@ class Details extends React.Component {
     let {movieId} = this.props.match.params;
     await this.props.getDetails(movieId);
     await this.props.findRatings(movieId);
-    console.log("Mounting Props", this.props.movieResults)
+
   }
 
   async vote(vote){
@@ -60,8 +60,6 @@ class Details extends React.Component {
       await this.props.updateVote(voteObj)
       this.setState({voted: vote})
     }
-
-    console.log("voted?", this.state.voted)
   }
 
 
@@ -70,7 +68,7 @@ class Details extends React.Component {
   }
 
   render (){
-    console.log("Here's the RENDER props", this.props.movieResults)
+
     const {Actors, Director, Genre, Plot, Poster, Rated, Runtime, Title } = this.props.details? this.props.details: "";
     return (
       <Container className="detailsContainer" fluid="sm xs xl">
