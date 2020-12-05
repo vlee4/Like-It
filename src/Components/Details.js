@@ -4,8 +4,12 @@ import {fetchDetails, updateRating, getRatings} from "../Store/moviesReducer";
 import {ReactComponent as ThumbUp} from "../images/thumb_up_alt-black-24dp.svg";
 import {ReactComponent as ThumbDown} from "../images/thumb_down_alt-black-24dp.svg";
 import {ReactComponent as NoImg} from "../images/image-not-found.svg";
+import {ReactComponent as BackArrow} from "../images/back-arrow-36dp.svg";
+import Image from "react-bootstrap/Image";
 
-// import {ReactComponent as Loading} from "../images/Loading.svg";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 
 class Details extends React.Component {
   constructor(){
@@ -22,7 +26,7 @@ class Details extends React.Component {
     let {movieId} = this.props.match.params;
     await this.props.getDetails(movieId);
     await this.props.findRatings(movieId);
-    console.log("Props", this.props)
+    console.log("Mounting Props", this.props.movieResults)
   }
 
   async vote(vote){
@@ -66,17 +70,24 @@ class Details extends React.Component {
   }
 
   render (){
-    console.log("Here's the props", this.props)
+    console.log("Here's the RENDER props", this.props.movieResults)
     const {Actors, Director, Genre, Plot, Poster, Rated, Runtime, Title } = this.props.details? this.props.details: "";
     return (
-      <div className="container">
-        <button className="backBtn" type="button" onClick={this.back}>Back</button>
+      <Container className="detailsContainer" fluid="sm xs xl">
+
+        <button className="backBtn" type="button" onClick={this.back}><BackArrow/></button>
        {this.props.details?
-       (<div className="movieContainer">
-        {Poster!=="N/A"? <img src={Poster} alt={`${Title} Poster`}></img>:<NoImg className="noImgSvg"/>}
+       (<Row className="movieContainer" >
+
+         <Col lg={4} xl={4}>
+        {Poster!=="N/A"?
+        <Image className="detailsPoster" src={Poster} alt={`${Title} Poster`}/>:
+         <NoImg className="noImgSvg"/>}</Col>
+         <Col lg={8} xl={8}>
          <div className="movieDetails">
             <h2>{Title}</h2>
             <div className="detail">{Plot}</div>
+            <hr/>
             <div className="detail"><strong>Director: </strong>{Director}</div>
             <div className="detail"><strong>Actors: </strong>{Actors}</div>
             <div className="detail"><strong>Genre: </strong>{Genre}</div>
@@ -94,11 +105,14 @@ class Details extends React.Component {
            </div>
           </div>
          </div>
-       </div>)
+         </Col>
+
+       </Row>)
        :(<div >
          <img className="loading" src="/Loading.svg" alt="Loading"></img>
          </div>)}
-      </div>
+
+      </Container>
     )
 
   }
@@ -120,32 +134,3 @@ const mapDispatchToProps = dispatch => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Details)
-
-/*
-Example of details received from a specific movie id query:
-Actors: "Connie Nielsen, Aidan Quinn, John Bell, Jack Gleeson"
-Awards: "4 wins & 8 nominations."
-BoxOffice: "N/A"
-Country: "Canada, Ireland"
-DVD: "N/A"
-Director: "Vic Sarin"
-Genre: "Drama, Family"
-Language: "English"
-Metascore: "52"
-Plot: ...
-Poster: "https://m.media-amazon.com/images/M/MV5BMjE4ODc3MDQ0NV5BMl5BanBnXkFtZTcwMjI3NTkyMw@@._V1_SX300.jpg"
-Production: "N/A"
-Rated: "PG"
-Ratings: (3) [{…}, {…}, {…}]
-Released: "13 Feb 2010"
-Response: "True"
-Runtime: "101 min"
-Title: "A Shine of Rainbows"
-Type: "movie"
-Website: "N/A"
-Writer: "Vic Sarin, Catherine Spear, Dennis Foon, Lillian Beckwith (novel)"
-Year: "2009"
-imdbID: "tt1014774"
-imdbRating: "7.1"
-imdbVotes: "2,153"
-*/

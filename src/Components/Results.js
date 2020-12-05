@@ -1,11 +1,16 @@
-import {connect} from "react-redux"
-import Pages from "./Pages";
+import {connect} from "react-redux";
+import Paginate from "./Pagination";
 import {fetchDetails, searchMovies} from "../Store/moviesReducer"
 import {Link} from "react-router-dom";
 import {ReactComponent as NoImg} from "../images/image-not-found.svg";
 
+import Card from "react-bootstrap/Card";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+
+
 function Results(props) {
-  console.log("Props", props)
   if(!props.query){
     return (
       <div className="container">
@@ -25,29 +30,34 @@ function Results(props) {
       )
     }
   return (
-    <div className="container">
+    <Container fluid className="container">
       {props.results.Response?
       (<div>
           <div className="resultNums">There is {props.results.totalResults} results for '{props.query}'</div>
            <div className="allMovies">
+             <Row xs={1} sm={1} md={2} lg={4} xl={4}>
              {props.results.Search.map((movie, idx) => {
                return (
-                 <div key={`${idx}_${movie.imdbID}`} className=
+                 <Col key={`${idx}_${movie.imdbID}`}>
+                 <Card className=
                  "singleResult">
                    <div className="posterContainer">
-                   {movie.Poster!=="N/A"?<img src={movie.Poster} alt={`${movie.Title} poster`} ></img>:<NoImg className="noImgSvg"/>}</div>
-                   <div className="movieInfo">
-                      <Link to={`/Movies/${movie.imdbID}`}><div>{movie.Title}</div></Link>
-                      <div>{movie.Year}</div>
+                   {movie.Poster!=="N/A"?
+                   <Card.Img src={movie.Poster} alt={`${movie.Title} poster`}/>:
+                   <NoImg className="noImgSvg"/>}
                    </div>
-                 </div>
+                   <div className="movieInfo">
+                      <Link to={`/Movies/${movie.imdbID}`}><Card.Title>{movie.Title}</Card.Title></Link>
+                      <Card.Text>{movie.Year}</Card.Text>
+                   </div>
+                 </Card></Col>
                )
-            })}</div>
+            })}</Row></div>
       </div>):
       <div>Sorry, no results were found for that query</div>
       }
-      {(props.results.totalResults>0)?(<Pages/>):""}
-    </div>
+      {(props.results.totalResults>0)?(<Paginate/>):""}
+    </Container>
   )
 }
 

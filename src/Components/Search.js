@@ -5,10 +5,10 @@ import {connect} from "react-redux"
 
 function Search() {
   return (
-    <span>
+    <div className="searchContainer">
       <SearchBar/>
       <Results/>
-    </span>
+    </div>
   )
 }
 
