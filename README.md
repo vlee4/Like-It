@@ -1,6 +1,6 @@
 # Like 1+
 
-<img src="https://github.com/vlee4/Like-It/blob/master/src/images/search-and-rate-t2.gif" width="800px" alt="search & rate movie demo"/>
+<img src="https://github.com/vlee4/Like-It/blob/master/src/images/demo/search-and-rate-t2.gif" width="800px" alt="search & rate movie demo"/>
 
 This project was made as a simple, single-page web application that allows the user to:
 
@@ -9,6 +9,8 @@ This project was made as a simple, single-page web application that allows the u
 - Rate the movie positively or negatively
 
 The deployed project may be accessed [here](https://like-1t.web.app/).
+
+**Note**: Additional demo gifs can be found in src/images/demo
 
 ## Start up
 
