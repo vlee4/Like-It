@@ -1,6 +1,6 @@
 # Like 1t
 
-![Searching and rating demo](search-and-rate.gif)
+<img src="https://github.com/vlee4/Like-It/blob/master/src/images/search-and-rate.gif" width="800px" alt="search & rate movie demo"/>
 
 This project was made as a simple, single-page web application that allows the user to:
 
