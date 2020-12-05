@@ -2,10 +2,6 @@
 
 <img src="https://github.com/vlee4/Like-It/blob/master/src/images/search-and-rate-t2.gif" width="800px" alt="search & rate movie demo"/>
 
-<img src="https://github.com/vlee4/Like-It/blob/master/src/images/pagination-demo.gif" width="800px" alt="search & rate movie demo"/>
-
-<img src="https://github.com/vlee4/Like-It/blob/master/src/images/Rating-demo.gif" alt="search & rate movie demo"/>
-
 This project was made as a simple, single-page web application that allows the user to:
 
 - Search for a movie
