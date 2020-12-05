@@ -411,10 +411,12 @@ body {
 }
 
 .Searchbar input {
+  border: black solid 1px;
   border-radius: 4px;
 }
 
 .Searchbar button {
+  border: black solid 1px;
   border-radius: 4px;
   background: white;
   color: black;
@@ -445,8 +447,16 @@ body {
   padding-bottom: 0.5em;
 }
 
+.row {
+  justify-content: center;
+}
+
 .col {
   margin: 1em 0em;
+}
+
+.onlyResult {
+  min-width: fit-content;
 }
 
 .singleResult {

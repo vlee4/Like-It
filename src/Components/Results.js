@@ -36,9 +36,10 @@ function Results(props) {
           <div className="resultNums">There is {props.results.totalResults} results for '{props.query}'</div>
            <div className="allMovies">
              <Row xs={1} sm={1} md={2} lg={4} xl={4}>
-             {props.results.Search.map((movie, idx) => {
+             {props.results.Search.map((movie, idx, arr) => {
+               let onlyResult = (arr.length>1) ? "": "onlyResult";
                return (
-                 <Col key={`${idx}_${movie.imdbID}`}>
+                 <Col className={onlyResult} key={`${idx}_${movie.imdbID}`}>
                  <Card className=
                  "singleResult">
                    <div className="posterContainer">
