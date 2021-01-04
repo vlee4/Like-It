@@ -38,7 +38,7 @@ const fetchRating = (ratings) => {
   }
 }
 
-//THUNKS
+//THUNKS (CREATORS)
 export const searchMovies = (query, page=1) => {
   return async dispatch => {
     try {

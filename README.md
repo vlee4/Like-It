@@ -79,3 +79,5 @@ Finally, after running `npm install` and `firebase deploy --only functions` the 
 - [ ] Create a page the displays all movies rated by users. Currently, movies rated by users are only recorded in the Realtime Database and don't make any apparent changes on the front end of the app.
 
 - [ ] Add fallback images for svgs
+
+- [ ] Add loading indication between page changes / after search query is submitted and results appear
