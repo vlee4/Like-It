@@ -11,16 +11,20 @@ import Col from "react-bootstrap/Col";
 
 
 function Results(props) {
+  console.log("PROPS", props)
+
   if(!props.query){
     return (
       <div className="container">
         Type in a movie name to search
       </div>
     )
-  }else if(!props.results){
+   }
+  else if(props.loading){
+    console.log("loading")
     return (
-      <div><span>Loading...</span>
-         <img className="loading" src="../images/Loading.svg" alt="Loading"></img>
+      <div>
+        <img className="loading" src="/Loading.svg" alt="Loading..."></img>
       </div>
     )
   }
@@ -29,11 +33,10 @@ function Results(props) {
       <div className="container">Sorry, no results for {props.query} </div>
       )
     }
-    // console.log("movies", props.results.Search)
   return (
     <Container fluid className="container">
       {props.results.Response?
-      (<div>
+        (<div>
           <div className="resultNums">There is {props.results.totalResults} result(s) for '{props.query}'</div>
            <div className="allMovies">
              <Row xs={1} sm={1} md={2} lg={4} xl={4}>
@@ -55,8 +58,8 @@ function Results(props) {
                  </Card></Col>
                )
             })}</Row></div>
-      </div>):
-      <div>Sorry, no results were found for that query</div>
+        </div>):
+        <div>Sorry, no results were found for that query</div>
       }
       {(props.results.totalResults>0)?(<Paginate/>):""}
     </Container>
@@ -66,14 +69,15 @@ function Results(props) {
 const mapStateToProps = state => {
   return {
     results: state.movieResults.results,
-    query: state.movieResults.query
+    query: state.movieResults.query,
+    loading: state.movieResults.loading,
   }
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     getDetails: (id) => dispatch(fetchDetails(id)),
-    searchForMovies: (query, page) => dispatch(searchMovies(query, page))
+    searchForMovies: (query, page) => dispatch(searchMovies(query, page)),
   }
 }
 

@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import {searchMovies} from "../Store/moviesReducer";
+import {searchMovies, loader} from "../Store/moviesReducer";
 
 class SearchBar extends React.Component {
   constructor(){
@@ -18,6 +18,7 @@ class SearchBar extends React.Component {
     this.setState({query: this.inputRef.current.value})
   }
   search(){
+    this.props.buffering(true);
     this.props.searchForMovies(this.state.query)
     this.setState({movieName: this.state.query, query: ""})
   }
@@ -36,7 +37,8 @@ class SearchBar extends React.Component {
 
 const mapDispatchToProps = dispatch => {
   return {
-    searchForMovies: (query) => dispatch(searchMovies(query))
+    searchForMovies: (query) => dispatch(searchMovies(query)),
+    buffering: (status) => dispatch(loader(status))
   }
 }
 

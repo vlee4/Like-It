@@ -401,6 +401,11 @@ body {
   text-shadow: #e4bf52 1px 0 10px;
 }
 
+/*---------- Loading ----------- */
+.loading {
+  margin: 2em 1em;
+}
+
 /* ----------Searchbar----------- */
 .Searchbar {
   display: flex;
