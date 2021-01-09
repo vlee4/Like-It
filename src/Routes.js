@@ -8,8 +8,8 @@ import Home from "./Components/Home";
 function Routes() {
   return (
     <Switch>
-      <Route exact path="/Movies/:movieId" component={Details}/>
-      <Route exact path="/Movies" component={Search}/>
+      <Route exact path="/movies/:movieId" component={Details}/>
+      <Route exact path="/movies" component={Search}/>
       <Route path="/" component={Home}/>
     </Switch>
   )

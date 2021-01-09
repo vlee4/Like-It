@@ -2,14 +2,14 @@ const functions = require('firebase-functions');
 const axios = require("axios");
 const cors = require("cors");
 const express = require("express");
-const morgan = require("morgan")
+// const morgan = require("morgan")
 const app = express();
 
 const admin = require("firebase-admin");
 admin.initializeApp();
 
 //Logging middleware
-app.use(morgan("dev"))
+// app.use(morgan("dev"))
 //Middleware
 app.use(cors({origin: true, allowedHeaders: ["content-type", "request-headers", "request-method" ]}));
 app.use(express.json())

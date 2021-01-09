@@ -29,11 +29,12 @@ function Results(props) {
       <div className="container">Sorry, no results for {props.query} </div>
       )
     }
+    // console.log("movies", props.results.Search)
   return (
     <Container fluid className="container">
       {props.results.Response?
       (<div>
-          <div className="resultNums">There is {props.results.totalResults} results for '{props.query}'</div>
+          <div className="resultNums">There is {props.results.totalResults} result(s) for '{props.query}'</div>
            <div className="allMovies">
              <Row xs={1} sm={1} md={2} lg={4} xl={4}>
              {props.results.Search.map((movie, idx, arr) => {
@@ -48,7 +49,7 @@ function Results(props) {
                    <NoImg className="noImgSvg"/>}
                    </div>
                    <div className="movieInfo">
-                      <Link to={`/Movies/${movie.imdbID}`}><Card.Title>{movie.Title}</Card.Title></Link>
+                      <Link to={`/movies/${movie.imdbID}`}><Card.Title>{movie.Title}</Card.Title></Link>
                       <Card.Text>{movie.Year}</Card.Text>
                    </div>
                  </Card></Col>
