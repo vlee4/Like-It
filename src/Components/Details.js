@@ -26,7 +26,6 @@ class Details extends React.Component {
     let {movieId} = this.props.match.params;
     await this.props.getDetails(movieId);
     await this.props.findRatings(movieId);
-
   }
 
   async vote(vote){
@@ -68,7 +67,6 @@ class Details extends React.Component {
   }
 
   render (){
-
     const {Actors, Director, Genre, Plot, Poster, Rated, Runtime, Title } = this.props.details? this.props.details: "";
     return (
       <Container className="detailsContainer" fluid="sm xs xl">

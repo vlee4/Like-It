@@ -11,7 +11,6 @@ import Col from "react-bootstrap/Col";
 
 
 function Results(props) {
-  console.log("PROPS", props)
 
   if(!props.query){
     return (
