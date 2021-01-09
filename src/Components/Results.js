@@ -20,7 +20,6 @@ function Results(props) {
     )
    }
   else if(props.loading){
-    console.log("loading")
     return (
       <div>
         <img className="loading" src="/Loading.svg" alt="Loading..."></img>
