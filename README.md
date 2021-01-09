@@ -80,4 +80,4 @@ Finally, after running `npm install` and `firebase deploy --only functions` the 
 
 - [ ] Add fallback images for svgs
 
-- [ ] Add loading indication between page changes / after search query is submitted and results appear
+- [ ] Modify loading indication between page changes / after search query is submitted and results appear

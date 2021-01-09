@@ -5,6 +5,7 @@ const SEARCH_MOVIES = "SEARCH_MOVIES";
 const GET_MOVIE_DETAILS = "GET_MOVIE_DETAILS";
 const UPDATE_VOTE = "UPDATE_VOTE";
 const GET_RATING = "GET_RATING";
+const LOADING = "LOADING";
 
 //ACTION CREATORS
 const startSearch = (query, movies, page) => {
@@ -35,6 +36,13 @@ const fetchRating = (ratings) => {
   return {
     type: GET_RATING,
     ratings
+  }
+}
+
+export const loader = (status) => {
+  return {
+    type: LOADING,
+    status
   }
 }
 
@@ -87,19 +95,21 @@ export const getRatings = (id) => {
 
 
 //REDUCER
-export default function moviesReducer(state ={page:1, ratingsStats: {upVotes:0, downVotes:0}, vote:{upVotes:0, downVotes: 0}}, action) {
+export default function moviesReducer(state ={page:1, ratingsStats: {upVotes:0, downVotes:0}, vote:{upVotes:0, downVotes: 0}, loading: false}, action) {
   switch (action.type) {
     case SEARCH_MOVIES:
-      return {...state, query: action.query, results: action.movies, page: action.page}
+      return {...state, query: action.query, results: action.movies, page: action.page, loading: false}
     case GET_MOVIE_DETAILS:
-      return {...state, details: action.details}
+      return {...state, details: action.details, loading: false}
     case UPDATE_VOTE:
       let {upVotes, downVotes} = action.update
       let updatedUp = upVotes+state.vote.upVotes;
       let updatedDown = downVotes+state.vote.downVotes;
-      return {...state, vote: {upVotes: updatedUp, downVotes: updatedDown}, ratingsStats: {...action.data}}
+      return {...state, vote: {upVotes: updatedUp, downVotes: updatedDown}, ratingsStats: {...action.data}, loading: false}
     case GET_RATING:
-      return {...state, ratingsStats: action.ratings}
+      return {...state, ratingsStats: action.ratings, loading: false}
+    case LOADING:
+      return {...state, loading: action.status}
     default:
       return state;
   }

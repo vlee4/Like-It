@@ -44,12 +44,11 @@ app.get("/:id", async(req, res)=>{
 app.get("/:id/ratings", async(req, res)=>{
   try{
     const db = admin.database();
-    let dbResults;
     await db.ref(`movies/${req.query.id}`).on("value", snap => {
       let results = (snap.val()&&((snap.val().upVotes>=0)&&(snap.val().downVotes>=0)))? snap.val():{upVotes:0, downVotes: 0};
-      dbResults = results;
+      res.send(results)
     });
-    res.send(dbResults);
+
 
   } catch(error){
     console.log("Error getting rating", error)
@@ -92,12 +91,11 @@ app.post("/:id", async(req, res)=>{
           })
       }
     }
-    let dbResults;
+
     await db.ref(`movies/${id}`).on("value", snap => {
       let results = (snap.val()&&((snap.val().upVotes>=0)&&(snap.val().downVotes>=0)))? snap.val():{upVotes:0, downVotes: 0};
-      dbResults = results;
+      res.send(results)
     })
-    res.send(dbResults)
   }
   catch(error){
     console.log("Error from firebase function updating rating", error)
